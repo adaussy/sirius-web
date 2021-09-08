@@ -115,6 +115,7 @@ public class RepresentationService implements IRepresentationService, IRepresent
                 .targetObjectId(representationMetadata.getTargetObjectId())
                 .label(representationMetadata.getLabel())
                 .representation(representation)
+                .kind(representationMetadata.getKind())
                 .build();
         // @formatter:on
     }
