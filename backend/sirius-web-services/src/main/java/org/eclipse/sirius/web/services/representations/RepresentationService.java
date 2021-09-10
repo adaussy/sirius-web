@@ -26,7 +26,7 @@ import org.eclipse.sirius.web.persistence.entities.ProjectEntity;
 import org.eclipse.sirius.web.persistence.entities.RepresentationEntity;
 import org.eclipse.sirius.web.persistence.repositories.IProjectRepository;
 import org.eclipse.sirius.web.persistence.repositories.IRepresentationRepository;
-import org.eclipse.sirius.web.representations.ISemanticRepresentation;
+import org.eclipse.sirius.web.representations.IRepresentation;
 import org.eclipse.sirius.web.representations.ISemanticRepresentationMetadata;
 import org.eclipse.sirius.web.services.api.representations.IRepresentationService;
 import org.eclipse.sirius.web.services.api.representations.RepresentationDescriptor;
@@ -92,7 +92,7 @@ public class RepresentationService implements IRepresentationService, IRepresent
     }
 
     @Override
-    public void save(IEditingContext editingContext, ISemanticRepresentationMetadata representationMetadata, ISemanticRepresentation representation) {
+    public void save(IEditingContext editingContext, ISemanticRepresentationMetadata representationMetadata, IRepresentation representation) {
         long start = System.currentTimeMillis();
         RepresentationDescriptor representationDescriptor = this.getRepresentationDescriptor(editingContext.getId(), representationMetadata, representation);
 
@@ -107,7 +107,7 @@ public class RepresentationService implements IRepresentationService, IRepresent
         this.timer.record(end - start, TimeUnit.MILLISECONDS);
     }
 
-    private RepresentationDescriptor getRepresentationDescriptor(UUID editingContextId, ISemanticRepresentationMetadata representationMetadata, ISemanticRepresentation representation) {
+    private RepresentationDescriptor getRepresentationDescriptor(UUID editingContextId, ISemanticRepresentationMetadata representationMetadata, IRepresentation representation) {
         // @formatter:off
         return RepresentationDescriptor.newRepresentationDescriptor(representationMetadata.getId())
                 .projectId(editingContextId)
